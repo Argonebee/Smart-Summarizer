@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Summarizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="home">
+  <header class="main-header">
+    <nav class="navbar">
+      <div class="navbar-brand">Smart Summarizer</div>
+      <ul class="navbar-links">
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="summarizer.html">App</a></li>
+        <li><button class="dark-toggle" id="darkToggle" title="Toggle dark mode" type="button">&#9790;</button></li>
+      </ul>
+    </nav>
+
+    <div class="header-content">
+      <h1>Smart Summarizer</h1>
+      <p class="subtitle">Convert lectures, PDFs, or videos into notes &amp; flashcards</p>
+      <button id="ctaBtn" class="cta-btn primary-btn" type="button">Start Summarizing</button>
+    </div>
+  </header>
+  <main>
+    <section class="hero-section">
+      <div class="hero-card feature-grid">
+        <div class="feature-box">
+          <span>🧠</span>
+          <h3>AI-Powered Summaries</h3>
+          <p>Convert long content into bite-sized bullet points using Gemini.</p>
+        </div>
+        <div class="feature-box">
+          <span>📚</span>
+          <h3>Flashcards in Seconds</h3>
+          <p>Get instant Q&A style flashcards for revision and practice.</p>
+        </div>
+        <div class="feature-box">
+          <span>💾</span>
+          <h3>Export & Save</h3>
+          <p>Download your notes or store them in your browser for later.</p>
+        </div>
+        <div class="feature-box">
+          <span>🔐</span>
+          <h3>Privacy First</h3>
+          <p>We don't store anything. Everything runs on your device.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <small>&copy; Smart Summarizer By Aromal M, GitHub: <a href="https://github.com/Argonebee" target="_blank" style="color: gold;">Argonebee</a></small>
+      <span class="footer-links">
+        <a href="faq.html" target="_blank">FAQ</a> | 
+        <a href="summarizer.html" target="_blank">App</a>
+      </span>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('ctaBtn').onclick = function() {
+      window.location.href = 'summarizer.html';
+    }
+    // Toggle dark mode on click
+    const toggleBtn = document.getElementById('darkToggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? '1' : '0');
+      });
+    }
+    // Restore dark mode on page load
+    if (localStorage.getItem('darkMode') === '1') {
+      document.body.classList.add('dark-mode');
+    }
+  </script>
+</body>
+</html>

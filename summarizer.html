@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Summarizer - Main App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- No external PDF.js, we use local ES modules -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="main-header">
+    <nav class="navbar">
+      <div class="navbar-brand">Smart Summarizer</div>
+      <ul class="navbar-links">
+        <li><a href="faq.html">FAQ</a></li>
+        <li><button class="dark-toggle" id="darkToggle" title="Toggle dark mode" type="button">&#9790;</button></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="app-main">
+    <div class="card app-card">
+      <form id="summarizerForm" class="input-form">
+        <h2>Summarize &amp; Create Flashcards</h2>
+        <label class="form-label">
+          <span>Paste your content</span>
+          <textarea id="inputText" rows="7" placeholder="Paste lecture notes, textbook, etc." class="input-field"></textarea>
+        </label>
+        <div class="file-inputs-row">
+          <label class="form-label">
+            <span>Upload PDF</span>
+            <input type="file" accept="application/pdf" id="pdfInput" class="input-field">
+          </label>
+          <label class="form-label">
+            <span>Upload Audio/Video</span>
+            <div class="input-group">
+              <input type="file" accept="audio/*,video/*" id="mediaInput" class="input-field">
+              <button type="button" id="transcribeBtn" class="secondary-btn" aria-label="Transcribe Audio or Video">Transcribe</button>
+            </div>
+          </label>
+        </div>
+        <div class="options-row">
+          <label class="form-label">
+            <span>Reading Level</span>
+            <select id="readingLevel" class="input-field">
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </label>
+          <label class="form-label">
+            <span>Gemini API Key</span>
+            <input type="password" id="apiKey" class="input-field" placeholder="Paste Gemini API Key" autocomplete="off">
+          </label>
+          <label class="form-label">
+            <span>OpenAI API Key (for Transcription)</span>
+            <input type="password" id="openaiApiKey" class="input-field" placeholder="Paste OpenAI API Key" autocomplete="off">
+          </label>
+        </div>
+        <div style="text-align: center;">
+          <button type="submit" class="primary-btn generate-btn" aria-label="Generate Summary and Flashcards">🧠 Generate Summary &amp; Flashcards</button>
+        </div>
+      </form>
+      <div id="statusToast" class="toast"></div>
+      <div id="loadingSpinner" class="spinner" style="display:none"></div>
+      <section id="outputSection" style="display:none">
+        <div class="output-header">
+          <h2>Bullet-Point Summary</h2>
+          <div class="export-row-wrapper">
+            <div class="export-row">
+              <button id="downloadTxtBtn" class="secondary-btn" type="button" aria-label="Export as TXT">Export as .txt</button>
+              <button id="downloadPdfBtn" class="secondary-btn" type="button" aria-label="Print or Save as PDF">Print or Save as PDF</button>
+              <button id="saveLocalBtn" class="secondary-btn" type="button" aria-label="Save to LocalStorage">Save to LocalStorage</button>
+            </div>
+          </div>
+        </div>
+        <ul id="summaryList" class="summary-list"></ul>
+        <h2>Key Points Flashcards</h2>
+        <!-- The flashcards will be injected by app.js -->
+        <div id="flashcardsContainer" class="flashcards"></div>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <span class="footer-links">
+        <a href="faq.html" target="_blank">FAQ / About</a> | 
+        <a href="index.html" target="_blank">Home</a>
+      </span>
+      <small>&copy; Smart Summarizer By Aromal M, GitHub: <a href="https://github.com/Argonebee" target="_blank" style="color: gold;">Argonebee</a></small>
+    </div>
+  </footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
